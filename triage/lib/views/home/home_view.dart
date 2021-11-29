@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// import 'package:triage/custom_widgets/button/primary_button.dart';
+// import 'package:triage/views/appointments/set_appointment_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -65,6 +67,15 @@ class HomeView extends StatelessWidget {
       //       ),
       //     ),
       //   ),
+      // ),
+      // body: const PrimaryButton(
+      //   buttonText: 'Yes',
+      //   buttonColor: Colors.orange,
+      //   onPressed: null,
+      // onPressed: () {
+      //   Navigator.of(context).push(MaterialPageRoute(
+      //       builder: (context) => const SetAppointmentView()));
+      // },
       // ),
     );
   }

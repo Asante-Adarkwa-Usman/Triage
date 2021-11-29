@@ -80,7 +80,7 @@ flutter:
         - asset: assets/fonts/Oxygen-Regular.ttf
         - asset: assets/fonts/Oxygen-Bold.ttf
         - asset: assets/fonts/Oxygen-Light.ttf
-          weight: 700
+        
           
   #         style: italic
   #   - family: Trajan Pro

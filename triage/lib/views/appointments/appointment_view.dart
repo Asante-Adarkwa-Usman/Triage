@@ -66,7 +66,11 @@ class AppointmentView extends StatelessWidget {
             builder: (context) => const SetAppointmentView(),
           ));
         },
-        child: const Icon(Icons.add, size: 30),
+        child: const Icon(
+          Icons.add,
+          size: 40,
+          color: Colors.white,
+        ),
       ),
     );
   }

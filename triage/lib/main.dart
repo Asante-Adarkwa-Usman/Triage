@@ -15,7 +15,8 @@ class TriageApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Triage Mobile',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
+
         // primaryColor: const Color.fromRGBO(85, 49, 78, 0.81),
       ),
       home: const SafeArea(child: ParentView()),

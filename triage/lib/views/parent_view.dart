@@ -37,7 +37,7 @@ class _ParentViewState extends State<ParentView> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color.fromRGBO(85, 49, 78, .81),
+        selectedItemColor: const Color.fromRGBO(85, 49, 78, 0.81),
         unselectedItemColor: Colors.grey,
         showSelectedLabels: true,
         items: const [

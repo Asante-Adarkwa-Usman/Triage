@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:triage/custom_widgets/available_days_view.dart';
 import 'package:triage/custom_widgets/available_time_view.dart';
+import 'package:triage/custom_widgets/button/primary_button.dart';
 import 'package:triage/custom_widgets/centered_text_view.dart';
 
 class SetAppointmentView extends StatelessWidget {
@@ -81,9 +82,16 @@ class SetAppointmentView extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
             const CenteredText(
               text: 'GH₵ 10 minimum',
+            ),
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 10, 0, 15),
+              child: const PrimaryButton(
+                onPressed: null,
+                buttonText: 'Save',
+                buttonColor: Color.fromRGBO(206, 93, 29, 1),
+              ),
             ),
           ],
         ),

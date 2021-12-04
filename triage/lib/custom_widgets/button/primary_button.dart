@@ -14,19 +14,24 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
-        onPressed: onPressed,
-        child: Text(
-          buttonText.toString(),
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.06,
+        child: ElevatedButton(
+          onPressed: onPressed,
+          child: Text(
+            buttonText.toString(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+            ),
           ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-              const Color.fromRGBO(206, 93, 29, 1)),
-          fixedSize: MaterialStateProperty.all<Size>(const Size.fromWidth(150)),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(
+                const Color.fromRGBO(206, 93, 29, 1)),
+            fixedSize:
+                MaterialStateProperty.all<Size>(const Size.fromWidth(150)),
+          ),
         ),
       ),
     );

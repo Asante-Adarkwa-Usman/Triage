@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:triage/views/home/appointment_request_view.dart';
+import 'package:triage/views/home/previous_appointment_view.dart';
+import 'package:triage/views/home/upcoming_appointment_view.dart';
 // import 'package:triage/custom_widgets/button/primary_button.dart';
 // import 'package:triage/views/appointments/set_appointment_view.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  // final TabController _tabController;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +32,6 @@ class HomeView extends StatelessWidget {
           actions: [
             Container(
               margin: const EdgeInsets.only(bottom: 70),
-              // alignment: Alignment.centerRight,
               child: IconButton(
                 icon: const Icon(
                   Icons.notifications,
@@ -84,14 +92,108 @@ class HomeView extends StatelessWidget {
                 'Good evening Dr Hasson Mensah',
                 style: TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   color: Colors.white,
                 ),
               ),
             ],
           ),
         ),
-      ), // ),
+      ),
+      body: DefaultTabController(
+        length: 3,
+        child: Column(
+          children: <Widget>[
+            RichText(
+              text: const TextSpan(
+                text: 'You have 3 ',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Patients',
+                      style: TextStyle(color: Color.fromRGBO(206, 93, 29, 1))),
+                  TextSpan(text: ' today!'),
+                ],
+              ),
+            ),
+            Divider(
+              thickness: 2,
+              color: Colors.grey[300],
+            ),
+            const SizedBox(height: 50),
+            Column(
+              children: [
+                const Text(
+                  'Total Earnings',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 0.5),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'GH₵ 1500',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black,
+                  ),
+                ),
+                Divider(
+                  thickness: 2,
+                  color: Colors.grey[300],
+                ),
+              ],
+            ),
+            const SizedBox(height: 50),
+            const TabBar(
+              tabs: <Widget>[
+                Tab(
+                  child: Text(
+                    'Upcoming Appointments',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(206, 93, 29, 1)),
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    ' Appointment Requests',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(206, 93, 29, 1)),
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    'Previous Appointments',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(206, 93, 29, 1)),
+                  ),
+                ),
+              ],
+            ),
+            const Expanded(
+              child: TabBarView(
+                children: [
+                  UpcomingAppointmentView(),
+                  AppointmentRequestView(),
+                  PreviousAppointmentView(),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

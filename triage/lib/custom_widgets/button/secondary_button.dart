@@ -4,11 +4,13 @@ class SecondaryButton extends StatelessWidget {
   final String? buttonText;
   final Color? buttonColor;
   final VoidCallback? onPressed;
+  final double? width;
   const SecondaryButton({
     Key? key,
     this.buttonText,
     this.buttonColor,
     this.onPressed,
+    this.width,
   }) : super(key: key);
 
   @override
@@ -24,9 +26,8 @@ class SecondaryButton extends StatelessWidget {
           ),
         ),
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-              const Color.fromRGBO(206, 93, 29, 1)),
-          fixedSize: MaterialStateProperty.all<Size>(const Size.fromWidth(150)),
+          backgroundColor: MaterialStateProperty.all<Color>(buttonColor!),
+          fixedSize: MaterialStateProperty.all<Size>(Size.fromWidth(width!)),
         ),
       ),
     );

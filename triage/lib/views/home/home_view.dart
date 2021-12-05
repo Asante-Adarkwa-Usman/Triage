@@ -9,10 +9,10 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80),
+        preferredSize: const Size.fromHeight(120),
         child: AppBar(
+          toolbarHeight: MediaQuery.of(context).size.height * 0.3,
           elevation: 0,
-          //leadingWidth: MediaQuery.of(context).size.width,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(10),
@@ -20,63 +20,78 @@ class HomeView extends StatelessWidget {
           ),
           centerTitle: true,
           backgroundColor: const Color.fromRGBO(85, 49, 78, 0.81),
-          title: Container(
-            margin: const EdgeInsets.all(40),
-            alignment: Alignment.bottomCenter,
-            child: const CircleAvatar(
-              backgroundImage: AssetImage('assets/images/user.png'),
-              radius: 30,
-              backgroundColor: Colors.white,
-            ),
-          ),
           actions: [
-            IconButton(
-                onPressed: null,
-                icon: Icon(Icons.notifications, size: 30, color: Colors.white))
+            Container(
+              margin: const EdgeInsets.only(bottom: 70),
+              // alignment: Alignment.centerRight,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.notifications,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                onPressed: () {},
+              ),
+            ),
           ],
+          title: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Stack(
+                      alignment: Alignment.center,
+                      textDirection: TextDirection.rtl,
+                      fit: StackFit.loose,
+                      clipBehavior: Clip.hardEdge,
+                      children: const <Widget>[
+                        CircleAvatar(
+                          radius: 38,
+                          backgroundColor: Colors.white,
+                          backgroundImage:
+                              AssetImage('assets/images/noUser.png'),
+                        ),
+                        Positioned(
+                          bottom: -5,
+                          right: -6,
+                          child: SizedBox(
+                            width: 45,
+                            height: 45,
+                            child: Card(
+                              color: Colors.transparent,
+                              shape: CircleBorder(
+                                side: BorderSide(
+                                  color: Colors.grey,
+                                  width: 1,
+                                ),
+                              ),
+                              child: IconButton(
+                                onPressed: null,
+                                icon: Icon(
+                                  Icons.camera_alt,
+                                  size: 24,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ]),
+                ],
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Good evening Dr Hasson Mensah',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      // body: SingleChildScrollView(
-      //   physics: NeverScrollableScrollPhysics(),
-      //   child: ClipRRect(
-      //     borderRadius: const BorderRadius.only(
-      //         bottomLeft: Radius.circular(10),
-      //         bottomRight: Radius.circular(10)),
-      //     child: Container(
-      //       color: const Color.fromRGBO(85, 49, 78, 0.81),
-      //       width: MediaQuery.of(context).size.width,
-      //       height: MediaQuery.of(context).size.height * 0.15,
-      //       child: ListTile(
-      //         leading: Container(
-      //           alignment: Alignment.center,
-      //           child: Flexible(
-      //             child: const CircleAvatar(
-      //               backgroundColor: Colors.white,
-      //               backgroundImage: AssetImage('assets/images/user.png'),
-      //               radius: 30,
-      //             ),
-      //           ),
-      //         ),
-      //         trailing: const IconButton(
-      //             onPressed: null,
-      //             icon: Icon(
-      //               Icons.notifications,
-      //               size: 30,
-      //               color: Colors.white,
-      //             )),
-      //       ),
-      //     ),
-      //   ),
-      // ),
-      // body: const PrimaryButton(
-      //   buttonText: 'Yes',
-      //   buttonColor: Colors.orange,
-      //   onPressed: null,
-      // onPressed: () {
-      //   Navigator.of(context).push(MaterialPageRoute(
-      //       builder: (context) => const SetAppointmentView()));
-      // },
-      // ),
+      ), // ),
     );
   }
 }

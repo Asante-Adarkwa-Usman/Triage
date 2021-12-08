@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:triage/custom_widgets/button/secondary_button.dart';
+import 'package:triage/views/profile/profile_settings/profile_settings_view.dart';
 import 'package:unicons/unicons.dart';
+
+import 'wallet/wallet_view.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -32,10 +35,13 @@ class ProfileView extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          const ProfileWidget(
+          ProfileWidget(
             iconName: UniconsLine.wallet,
             text: 'Wallet',
-            onPressed: null,
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const WalletView()));
+            },
           ),
           const Divider(
             thickness: 1,
@@ -65,10 +71,13 @@ class ProfileView extends StatelessWidget {
             indent: 40,
             endIndent: 40,
           ),
-          const ProfileWidget(
+          ProfileWidget(
             iconName: UniconsLine.cog,
             text: 'Profile Settings',
-            onPressed: null,
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const ProfileSettingsView()));
+            },
           ),
           const Divider(
             thickness: 1,
@@ -121,32 +130,32 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: SizedBox(
-        height: 45,
-        width: 45,
-        child: Card(
-          shape: const CircleBorder(),
-          color: const Color.fromRGBO(206, 93, 29, 1),
-          child: Icon(
-            iconName,
-            size: 28,
-            color: Colors.white,
+    return InkWell(
+      onTap: onPressed,
+      child: ListTile(
+        leading: SizedBox(
+          height: 45,
+          width: 45,
+          child: Card(
+            shape: const CircleBorder(),
+            color: const Color.fromRGBO(206, 93, 29, 1),
+            child: Icon(
+              iconName,
+              size: 28,
+              color: Colors.white,
+            ),
           ),
         ),
-      ),
-      title: Text(
-        text.toString(),
-        style: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w400,
-          fontFamily: 'Oxygen-Regular',
-          color: Color.fromRGBO(0, 0, 0, 0.7),
+        title: Text(
+          text.toString(),
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+            fontFamily: 'Oxygen-Regular',
+            color: Color.fromRGBO(0, 0, 0, 0.7),
+          ),
         ),
-      ),
-      trailing: IconButton(
-        onPressed: onPressed,
-        icon: const Icon(
+        trailing: const Icon(
           Icons.arrow_forward_ios,
           size: 20,
           color: Color.fromRGBO(0, 0, 0, 0.7),

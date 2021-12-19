@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:triage/custom_widgets/button/primary_button.dart';
+import 'package:unicons/unicons.dart';
 
 class ProfileSettingsView extends StatelessWidget {
   const ProfileSettingsView({Key? key}) : super(key: key);
@@ -28,32 +30,95 @@ class ProfileSettingsView extends StatelessWidget {
           ),
         ),
       ),
-      body: Form(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                prefixIcon: Icon(
-                  Icons.person_outlined,
-                  color: Color.fromRGBO(206, 93, 29, 1),
-                  size: 30,
-                ),
-                labelText: 'Fullname',
-                labelStyle: TextStyle(
-                  color: Color.fromRGBO(0, 0, 0, 0.3),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
+            Form(
+              child: Column(
+                children: const [
+                  InputField(
+                    hintText: 'Fullname',
+                    icon: Icons.person_outlined,
+                  ),
+                  InputField(
+                    hintText: 'Email',
+                    icon: UniconsLine.envelope,
+                  ),
+                  InputField(
+                    hintText: 'Phone No.(for SMS and Payment)',
+                    icon: Icons.phone_android,
+                  ),
+                  InputField(
+                    hintText: 'Experience',
+                    icon: UniconsLine.schedule,
+                  ),
+                  InputField(
+                    hintText: 'Sex',
+                    icon: UniconsLine.user_md,
+                  ),
+                  InputField(
+                      hintText: 'Current Hospital', icon: UniconsLine.hospital),
+                  InputField(
+                    hintText: 'Hospital Address',
+                    icon: Icons.location_on_outlined,
+                  ),
+                  InputField(
+                    hintText: 'Speciality',
+                    icon: UniconsLine.stethoscope,
+                  ),
+                  InputField(
+                    hintText: 'Change Password',
+                    icon: UniconsLine.padlock,
+                  ),
+                ],
               ),
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.25,
               ),
+              child: PrimaryButton(
+                  onPressed: () {},
+                  buttonText: 'Save',
+                  buttonColor: const Color.fromRGBO(206, 93, 29, 1)),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class InputField extends StatelessWidget {
+  final String? hintText;
+  final IconData? icon;
+  const InputField({
+    this.hintText,
+    this.icon,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        prefixIcon: Icon(
+          icon,
+          color: const Color.fromRGBO(206, 93, 29, 1),
+          size: 30,
+        ),
+        labelText: hintText.toString(),
+        labelStyle: const TextStyle(
+          color: Color.fromRGBO(0, 0, 0, 0.3),
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      style: const TextStyle(
+        color: Color.fromRGBO(0, 0, 0, .6),
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
       ),
     );
   }

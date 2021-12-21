@@ -18,7 +18,7 @@ class UpcomingAppointmentView extends StatelessWidget {
                 endIndent: 30,
               );
             },
-            itemCount: 4)
+            itemCount: 5)
         //,
         );
   }
